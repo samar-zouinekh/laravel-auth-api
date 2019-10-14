@@ -4,5 +4,5 @@ namespace MedianetDev\LaravelAuthApi;
 
 class LaravelAuthApi
 {
-    // Build your next great package. ss
+    // Build your next great package. again
 }
