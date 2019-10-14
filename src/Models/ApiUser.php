@@ -34,7 +34,7 @@ class ApiUser extends Authenticatable implements MustVerifyEmail
 
     /**
      * The attributes that should be cast to native types.
-     *
+     * lslsls
      * @var array
      */
     protected $casts = [
