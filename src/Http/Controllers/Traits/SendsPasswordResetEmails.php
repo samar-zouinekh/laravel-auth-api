@@ -2,19 +2,18 @@
 
 namespace MedianetDev\LaravelAuthApi\Http\Controllers\Traits;
 
-use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
 use MedianetDev\LaravelAuthApi\Models\ApiUser;
 
 trait SendsPasswordResetEmails
 {
-
-
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function sendResetLinkEmail(Request $request)
@@ -28,7 +27,9 @@ trait SendsPasswordResetEmails
         $user = ApiUser::where('email', $this->credentials($request))->first();
 
         // sent user not found response
-        if (!$user) return $this->sendResetLinkFailedResponse($request, Password::INVALID_USER);
+        if (! $user) {
+            return $this->sendResetLinkFailedResponse($request, Password::INVALID_USER);
+        }
 
         // generate the token
         $token = $this->generateToken($user);
@@ -42,20 +43,22 @@ trait SendsPasswordResetEmails
 
     private function generateToken($user)
     {
-        $token = mt_rand(1000,9999);
-        \DB::table('password_resets')->where('email',$user->email)->delete();
+        $token = mt_rand(1000, 9999);
+        \DB::table('password_resets')->where('email', $user->email)->delete();
         \DB::table('password_resets')->insert([
             'email' => $user->email,
             'token' => \Hash::make($token), //change 60 to any length you want
-            'created_at' => \Carbon\Carbon::now()
+            'created_at' => \Carbon\Carbon::now(),
         ]);
+
         return $token;
     }
 
     /**
      * Validate the email for the given request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     protected function validateEmail(Request $request)
@@ -66,7 +69,8 @@ trait SendsPasswordResetEmails
     /**
      * Get the needed authentication credentials from the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     protected function credentials(Request $request)
@@ -77,24 +81,26 @@ trait SendsPasswordResetEmails
     /**
      * Get the response for a successful password reset link.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $response
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $response
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 1, 200);
+        return ApiResponse::send([['status' => trans($response)]], 1, 200, trans($response));
     }
 
     /**
      * Get the response for a failed password reset link.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $response
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $response
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 0, 422);
+        return ApiResponse::send([['status' => trans($response)]], 0, 422, trans($response));
     }
 }

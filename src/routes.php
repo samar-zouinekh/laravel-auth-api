@@ -32,6 +32,8 @@ Route::group(
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('api.auth.password.send');
         // process the reset password process
         Route::post('password/reset', 'ResetPasswordController@reset')->name('api.auth.password.reset');
+        // change password
+        Route::post('password/change', 'ChangePasswordController@changePassword')->name('api.auth.password.change');
 
         // update user profile info
         Route::post('user/update', 'ChangeUserProfileInfoController@update')->name('api.auth.user.update');

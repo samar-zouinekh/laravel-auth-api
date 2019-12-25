@@ -4,15 +4,15 @@ namespace MedianetDev\LaravelAuthApi\Http\Helpers;
 
 use Symfony\Component\HttpFoundation\Response as ResponseCode;
 
-class ApiResponse {
-
+class ApiResponse
+{
     /**
      * @var array
      */
     private $data;
 
     /**
-     * @var int
+     * @var boolean
      */
     private $status;
 
@@ -31,20 +31,20 @@ class ApiResponse {
         $this->data = $data;
         $this->status = $status;
         $this->responseCode = $responseCode;
-        $this->message = $message ? : ResponseCode::$statusTexts[$responseCode];
+        $this->message = $message ?: ResponseCode::$statusTexts[$responseCode];
     }
 
     /**
      * setup, build and return the response.
      *
-     * @param array  $data An array of returned data
-     * @param int    $status 0 or 1 for the operation status
+     * @param array  $data         An array of returned data
+     * @param int    $status       true or false for the operation status
      * @param int    $responseCode the Http response code
-     * @param string $message response message
+     * @param string $message      response message
      *
      * @return \Illuminate\Http\Response
      */
-    public static function send($data, $status = 1, $responseCode = ResponseCode::HTTP_OK, string $message = "")
+    public static function send($data, $status = true, $responseCode = ResponseCode::HTTP_OK, string $message = '')
     {
         return (new static($data, $status, $responseCode, $message))->buildResponse();
     }
@@ -57,9 +57,10 @@ class ApiResponse {
     private function buildResponse()
     {
         return response()->json([
-            'status'  => $this->status,
+            'base_url' => \URL::to('/'),
+            'status' => (bool) $this->status,
             'message' => $this->message,
-            'data'    => $this->data,
+            'data' => $this->data,
         ], $this->responseCode);
     }
 }

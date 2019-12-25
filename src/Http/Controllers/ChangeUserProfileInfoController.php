@@ -2,13 +2,12 @@
 
 namespace MedianetDev\LaravelAuthApi\Http\Controllers;
 
-use MedianetDev\LaravelAuthApi\Http\Controllers\Controller;
-use MedianetDev\LaravelAuthApi\Http\Requests\ChangeUserProfileInfoRequest;
 use Illuminate\Support\Facades\Auth;
+use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
+use MedianetDev\LaravelAuthApi\Http\Requests\ChangeUserProfileInfoRequest;
 
 class ChangeUserProfileInfoController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -28,6 +27,6 @@ class ChangeUserProfileInfoController extends Controller
         $user->email = $request->email;
         $user->save();
 
-        return response()->json(['status' => 'Account updated successfully'], 200);
+        return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
     }
 }

@@ -32,9 +32,9 @@ class ApiLoginRegisterController extends Controller
         $user = User::create($input);
         $user->sendEmailVerificationNotification();
         $success = [];
-        array_push($success, ['access_token' => $user->createToken('AppName')->accessToken]);
-        array_push($success, ['user' => $user->toArray()]);
-        return  response()->json($success, 201);
+        $success['access_token'] = $user->createToken('AppName')->accessToken;
+        $success['user'] = $user->toArray();
+        return  ApiResponse::send($success, 1, 201, "Account created successfully");
     }
 
 
@@ -43,17 +43,17 @@ class ApiLoginRegisterController extends Controller
         if (Auth::guard('apiauthweb')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::guard('apiauthweb')->user();
             $success = [];
-            array_push($success, ['access_token' => $user->createToken('AppName')->accessToken]);
-            array_push($success, ['user' => $user->toArray()]);
+            $success['access_token'] = $user->createToken('AppName')->accessToken;
+            $success['user'] = $user->toArray();
             return ApiResponse::send($success, 1, 200);
         } else {
-            return ApiResponse::send(['error' => 'Unauthorised'], 0, 401);
+            return ApiResponse::send(['error' => 'Unauthorised'], 0, 401, 'Password or incorrect identity');
         }
     }
 
     public function getUser()
     {
         $user = Auth::guard('apiauth')->user();
-        return ApiResponse::send([$user], 1, 200);
+        return ApiResponse::send($user, 1, 200);
     }
 }
