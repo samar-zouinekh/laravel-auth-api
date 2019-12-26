@@ -109,7 +109,7 @@ trait ResetsPasswords
      */
     protected function sendResetResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 1, 200, trans($response));
+        return ApiResponse::send(['status' => trans($response)], 1, 200, trans($response));
     }
 
     /**
@@ -122,7 +122,7 @@ trait ResetsPasswords
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 0, 200, trans($response));
+        return ApiResponse::send(['status' => trans($response)], 0, 200, trans($response));
     }
 
     /**

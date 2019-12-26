@@ -88,7 +88,7 @@ trait SendsPasswordResetEmails
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 1, 200, trans($response));
+        return ApiResponse::send(['status' => trans($response)], 1, 200, trans($response));
     }
 
     /**
@@ -101,6 +101,6 @@ trait SendsPasswordResetEmails
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        return ApiResponse::send([['status' => trans($response)]], 0, 422, trans($response));
+        return ApiResponse::send(['status' => trans($response)], 0, 422, trans($response));
     }
 }
