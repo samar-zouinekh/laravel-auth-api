@@ -26,4 +26,7 @@ return [
         // 'update_user',
         // 'login_with_social',
     ],
+
+    // Automatically send a verification email after a new registration or not.
+    'auto_send_verify_email' => true,
 ];

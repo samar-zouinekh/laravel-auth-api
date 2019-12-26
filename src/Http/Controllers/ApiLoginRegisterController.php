@@ -2,14 +2,11 @@
 
 namespace MedianetDev\LaravelAuthApi\Http\Controllers;
 
-use Illuminate\Http\Request;
-use MedianetDev\LaravelAuthApi\Http\Controllers\Controller;
-use MedianetDev\LaravelAuthApi\Models\ApiUser as User;
 use Illuminate\Support\Facades\Auth;
 use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
 use MedianetDev\LaravelAuthApi\Http\Requests\ApiUserLoginRequest as LoginRequest;
 use MedianetDev\LaravelAuthApi\Http\Requests\ApiUserRegisterRequest as RegisterRequest;
-use Validator;
+use MedianetDev\LaravelAuthApi\Models\ApiUser as User;
 
 class ApiLoginRegisterController extends Controller
 {
@@ -30,13 +27,15 @@ class ApiLoginRegisterController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $user->sendEmailVerificationNotification();
+        if (config('laravel-auth-api.auto_send_verify_email')) {
+            $user->sendEmailVerificationNotification();
+        }
         $success = [];
         $success['access_token'] = $user->createToken('AppName')->accessToken;
         $success['user'] = $user->toArray();
-        return  ApiResponse::send($success, 1, 201, "Account created successfully");
-    }
 
+        return  ApiResponse::send($success, 1, 201, 'Account created successfully');
+    }
 
     public function login(LoginRequest $request)
     {
@@ -45,6 +44,7 @@ class ApiLoginRegisterController extends Controller
             $success = [];
             $success['access_token'] = $user->createToken('AppName')->accessToken;
             $success['user'] = $user->toArray();
+
             return ApiResponse::send($success, 1, 200);
         } else {
             return ApiResponse::send(['error' => 'Unauthorised'], 0, 401, 'Password or incorrect identity');
@@ -54,6 +54,7 @@ class ApiLoginRegisterController extends Controller
     public function getUser()
     {
         $user = Auth::guard('apiauth')->user();
+
         return ApiResponse::send($user, 1, 200);
     }
 }
