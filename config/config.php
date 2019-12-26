@@ -15,4 +15,15 @@ return [
 
     // Fully qualified namespace of the Password Reset notification template
     'password_notification' => \MedianetDev\LaravelAuthApi\Http\Controllers\Traits\Notifications\ResetPassword::class,
+
+    // Uncomment the route to disabled it.
+    'disabled_routes' => [
+        // 'resend_verification_email',
+        // 'verify_email',
+        // 'send_reset_password_email',
+        // 'reset_password',
+        // 'change_password',
+        // 'update_user',
+        // 'login_with_social',
+    ],
 ];
