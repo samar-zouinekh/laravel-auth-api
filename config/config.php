@@ -8,7 +8,7 @@ return [
     'route_prefix' => 'api/v1',
 
     // Fully qualified namespace of the User model
-    //'user_model_fqn' => App\Models\ApiUser::class,
+    'user_model_fqn' => MedianetDev\LaravelAuthApi\Models\ApiUser::class,
 
     // Fully qualified namespace of the Email verification notification template
     'email_notification' => \MedianetDev\LaravelAuthApi\Http\Controllers\Traits\Notifications\VerifyEmail::class,
