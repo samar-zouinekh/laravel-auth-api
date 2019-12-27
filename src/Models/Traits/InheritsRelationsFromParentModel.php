@@ -41,7 +41,7 @@ trait InheritsRelationsFromParentModel
     public function getTable()
     {
         if (! isset($this->table)) {
-            return str_replace('\\', '', Str::snake(str_plural(class_basename($this->getParentClass()))));
+            return str_replace('\\', '', Str::snake(Str::plural(class_basename($this->getParentClass()))));
         }
 
         return $this->table;
