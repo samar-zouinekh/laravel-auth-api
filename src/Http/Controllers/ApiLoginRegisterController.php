@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
 use MedianetDev\LaravelAuthApi\Http\Requests\ApiUserLoginRequest as LoginRequest;
 use MedianetDev\LaravelAuthApi\Http\Requests\ApiUserRegisterRequest as RegisterRequest;
-use MedianetDev\LaravelAuthApi\Models\ApiUser as User;
 
 class ApiLoginRegisterController extends Controller
 {
@@ -24,9 +23,10 @@ class ApiLoginRegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
+        $user = config('laravel-auth-api.user_model_fqn');
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
+        $user = (new $user)->create($input);
         if (config('laravel-auth-api.auto_send_verify_email')) {
             $user->sendEmailVerificationNotification();
         }

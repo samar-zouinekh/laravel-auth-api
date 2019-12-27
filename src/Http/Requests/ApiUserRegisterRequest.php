@@ -23,9 +23,11 @@ class ApiUserRegisterRequest extends FormRequest
      */
     public function rules()
     {
+        $user = config('laravel-auth-api.user_model_fqn');
+
         return [
             'name' => 'required|min:4|max:20',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:'.(new $user)->getTable().',email',
             'password' => 'required|min:8',
             'c_password' => 'required|same:password',
         ];

@@ -25,9 +25,11 @@ class ChangeUserProfileInfoRequest extends FormRequest
      */
     public function rules()
     {
+        $user = config('laravel-auth-api.user_model_fqn');
+
         return [
             'name'     => 'required|min:6',
-            'email'    => 'required|email|unique:users,email,'. Auth::id(),
+            'email'    => 'required|email|unique:'.(new $user)->getTable().',email,'. Auth::id(),
             'password' => 'required',
         ];
     }
