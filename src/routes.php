@@ -20,8 +20,12 @@ Route::group(
         /*
          *  Login and register users throw email address
          */
-        Route::post('login', 'ApiLoginRegisterController@login')->name('api.auth.login');
-        Route::post('register', 'ApiLoginRegisterController@register')->name('api.auth.register');
+        if (config('laravel-auth-api.login')) {
+            Route::post('login', 'ApiLoginRegisterController@login')->name('api.auth.login');
+        }
+        if (config('laravel-auth-api.registration')) {
+            Route::post('register', 'ApiLoginRegisterController@register')->name('api.auth.register');
+        }
         Route::get('getUser', 'ApiLoginRegisterController@getUser')->name('api.auth.user');
 
         if (! in_array('resend_verification_email', config('laravel-auth-api.disabled_routes'))) {

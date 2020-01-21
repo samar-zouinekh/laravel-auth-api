@@ -29,4 +29,10 @@ return [
 
     // Automatically send a verification email after a new registration or not.
     'auto_send_verify_email' => true,
+
+    // Enable login
+    'login' => env('LARAVEL_AUTH_API_LOGIN', true),
+
+    // Enable registration
+    'registration' => env('LARAVEL_AUTH_API_REGISTRATION', false),
 ];
