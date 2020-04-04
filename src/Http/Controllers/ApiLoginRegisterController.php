@@ -16,7 +16,7 @@ class ApiLoginRegisterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth:api')->only('getUser');
+        $this->middleware('auth:api')->only('getUser');
     }
 
     public $successStatus = 200;
