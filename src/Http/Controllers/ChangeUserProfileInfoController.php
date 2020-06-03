@@ -23,17 +23,16 @@ class ChangeUserProfileInfoController extends Controller
         //TODO: encapsulate all the responses with ApiRequest
         $user = Auth::guard('apiauth')->user();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-
         if ($user->email != $request->email) {
             // mark the email as not verified yet
             $user->email_verified_at = null;
-            $user->save();
             // send a verification email
             $user->sendEmailVerificationNotification();
         }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
 
         return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
     }
