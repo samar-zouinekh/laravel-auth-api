@@ -30,25 +30,6 @@ class ChangeUserProfileInfoRequest extends FormRequest
         return [
             'name'     => 'required|min:6',
             'email'    => 'required|email|unique:'.(new $user)->getTable().',email,'. Auth::id(),
-            'password' => 'required',
         ];
-    }
-
-    /**
-     * Configure the validator instance.
-     *
-     * @param \Illuminate\Validation\Validator $validator
-     *
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        //TODO: translate the validation error messages for all requests and why not publish those language files
-        $validator->after(function ($validator) {
-            // check old password matches
-            if (! Hash::check($this->input('password'), Auth::user()->password)) {
-                $validator->errors()->add('password', 'the password is incorrect.');
-            }
-        });
     }
 }
