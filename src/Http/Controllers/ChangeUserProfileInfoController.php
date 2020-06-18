@@ -25,8 +25,16 @@ class ChangeUserProfileInfoController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $image = $request->image->store('uploads', 'public');
-        $user->image = $image;
+        
+
+        if ($user->isDirty('email')) {
+            // mark the email as not verified yet
+            $user->email_verified_at = null;
+            // send a verification email
+            $user->sendEmailVerificationNotification();
+        }
+
+        $user->save();
 
         return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
     }
