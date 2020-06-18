@@ -25,7 +25,8 @@ class ChangeUserProfileInfoController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->save();
+        $image = $request->image->store('uploads', 'public');
+        $user->image = $image;
 
         return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
     }
