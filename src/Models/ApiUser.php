@@ -13,15 +13,7 @@ class ApiUser extends Authenticatable implements MustVerifyEmail
     use InheritsRelationsFromParentModel;
 
     protected $table = 'users';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,5 +32,4 @@ class ApiUser extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 }
