@@ -25,7 +25,6 @@ class SocialAccountRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'image' => 'required',
             'provider_name' => 'required',
             'provider_id' => 'required',
             'email' => 'required|email',
