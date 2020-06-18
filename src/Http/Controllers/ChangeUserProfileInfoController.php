@@ -25,6 +25,7 @@ class ChangeUserProfileInfoController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        
 
         if ($user->isDirty('email')) {
             // mark the email as not verified yet

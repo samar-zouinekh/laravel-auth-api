@@ -29,7 +29,12 @@ class LinkedSocialAccountController extends Controller
         // if there is no user with that email address create one
         $newUser = false;
         if (! $user) {
-            $user = ApiUser::create($request->only(['name', 'email']));
+            ApiUser::unguard();
+            $user = ApiUser::create($request->only(array_merge(
+                ['name', 'email'],
+                config('laravel-auth-api.extra_user_column')
+            )));
+
             $newUser = true;
         }
 
