@@ -13,7 +13,7 @@ class ApiUser extends Authenticatable implements MustVerifyEmail
     use InheritsRelationsFromParentModel;
 
     protected $table = 'users';
-    protected $guarded = [];
+    protected $guarded = ['c_password'];
 
     /**
      * The attributes that should be hidden for arrays.
