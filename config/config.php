@@ -27,6 +27,17 @@ return [
         // 'login_with_social',
     ],
 
+    // Extra columns with their validation or without
+    'extra_columns' => [
+        // 'phone' => 'required|number|min:8|max:12', // column with validation
+        // 'is_active' => '', // column without validation
+    ],
+
+    // Extra columns validation messages
+    'extra_columns_validation_message' => [
+        // 'phone.number' => 'Use numbers in the phone number.',
+    ],
+
     // Automatically send a verification email after a new registration or not.
     'auto_send_verify_email' => true,
 
