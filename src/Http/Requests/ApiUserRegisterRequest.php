@@ -25,12 +25,12 @@ class ApiUserRegisterRequest extends FormRequest
     {
         $user = config('laravel-auth-api.user_model_fqn');
 
-        return [
+        return array_merge([
             'name' => 'required|min:4|max:20',
             'email' => 'required|unique:'.(new $user)->getTable().',email',
             'password' => 'required|min:8',
             'c_password' => 'required|same:password',
-        ];
+        ], config('laravel-auth-api.extra_columns'));
     }
 
     /**
@@ -40,16 +40,8 @@ class ApiUserRegisterRequest extends FormRequest
      */
     public function messages()
     {
-        return [
-        /*'name.required' => '',
-            'name.min' => '',
-            'name.max' => '',
-            'email.required' => '',
-            'email.unique' => '',
-            'password.unique' => '',
-            'password.min' => '',
-            'c_password.required' => '',
-            'c_password.same' => '',
-            */];
+        return array_merge([
+            //
+        ], config('laravel-auth-api.extra_columns_validation_message'));
     }
 }

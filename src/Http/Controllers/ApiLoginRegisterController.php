@@ -24,7 +24,9 @@ class ApiLoginRegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $user = config('laravel-auth-api.user_model_fqn');
-        $input = $request->all();
+        $input = $request->only(
+            array_merge(['name', 'email', 'password'], array_keys(config('laravel-auth-api.extra_columns')))
+        );
         $input['password'] = bcrypt($input['password']);
         $user = (new $user)->create($input);
         if (config('laravel-auth-api.auto_send_verify_email')) {
