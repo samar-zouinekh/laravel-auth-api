@@ -34,14 +34,14 @@ class GetUserTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJsonStructure([
-                'base_url',
-                'status',
-                'message',
-                'data' => [
-                    'id',
-                    'name',
-                    'email',
-                ],
+            'base_url',
+            'status',
+            'message',
+            'data' => [
+                'id',
+                'name',
+                'email',
+            ],
         ]);
     }
 }
