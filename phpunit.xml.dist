@@ -26,6 +26,7 @@
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <server name="DB_CONNECTION" value="testing"/>
         <server name="LARAVEL_AUTH_API_REGISTRATION" value="true"/>
     </php>
 </phpunit>
