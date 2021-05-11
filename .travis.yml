@@ -5,13 +5,17 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
+  - nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
 
 install: travis_retry composer install --no-interaction --prefer-dist
 
 script: vendor/bin/phpunit --coverage-clover=coverage.clover
-
-after_script:
-    - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
 
 notifications:
   email:
