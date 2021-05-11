@@ -7,11 +7,11 @@
 
 
 [ico-version]: https://img.shields.io/packagist/v/medianet-dev/laravel-auth-api.svg
-[ico-build]: https://scrutinizer-ci.com/g/Medianet-Tunisia/laravel-auth-api/badges/build.png?b=master
+[ico-build]: https://travis-ci.com/Medianet-Tunisia/laravel-auth-api.svg?branch=master
 [ico-quality]: https://img.shields.io/scrutinizer/g/Medianet-Tunisia/laravel-auth-api.svg
 [ico-downloads]: https://img.shields.io/packagist/dt/medianet-dev/laravel-auth-api.svg
 
 [link-version]: https://packagist.org/packages/medianet-dev/laravel-auth-api
-[link-build]: https://scrutinizer-ci.com/g/Medianet-Tunisia/laravel-auth-api/build-status/master
+[link-build]: https://travis-ci.com/Medianet-Tunisia/laravel-auth-api
 [link-quality]: https://scrutinizer-ci.com/g/Medianet-Tunisia/laravel-auth-api
 [link-downloads]: https://packagist.org/packages/medianet-dev/laravel-auth-api
