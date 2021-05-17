@@ -20,20 +20,26 @@ class ChangeUserProfileInfoController extends Controller
 
     public function update(ChangeUserProfileInfoRequest $request)
     {
-        //TODO: encapsulate all the responses with ApiRequest
         $user = Auth::guard('apiauth')->user();
+        $oldEmail = $user->email;
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-
-        if ($user->isDirty('email')) {
-            // mark the email as not verified yet
+        $user->update($request->only(
+            array_merge(['name', 'email'],
+            array_keys(config('laravel-auth-api.extra_columns'))
+        )));
+        if ($user->email !== $oldEmail) {
             $user->email_verified_at = null;
-            // send a verification email
-            $user->sendEmailVerificationNotification();
+            $user->save();
+            if (config('laravel-auth-api.auto_send_verify_email', false)) {
+                try {
+                    $user->sendEmailVerificationNotification();
+                } catch (\Throwable $th) {
+                    app('log')->warning(
+                        'Cannot send verification email to this address: '.$user->email.'; '.$th->getMessage()
+                    );
+                }
+            }
         }
-
-        $user->save();
 
         return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
     }

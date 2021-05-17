@@ -26,9 +26,9 @@ class ChangeUserProfileInfoRequest extends FormRequest
     {
         $user = config('laravel-auth-api.user_model_fqn');
 
-        return [
+        return array_merge([
             'name'     => 'required|min:6',
             'email'    => 'required|email|unique:'.(new $user)->getTable().',email,'.Auth::id(),
-        ];
+        ], config('laravel-auth-api.extra_columns'));
     }
 }
