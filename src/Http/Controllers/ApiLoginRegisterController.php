@@ -29,7 +29,7 @@ class ApiLoginRegisterController extends Controller
         );
         $input['password'] = bcrypt($input['password']);
         $user = (new $user)->create($input);
-        if (config('laravel-auth-api.auto_send_verify_email')) {
+        if (config('laravel-auth-api.auto_send_verify_email', false)) {
             $user->sendEmailVerificationNotification();
         }
         $success = [];
