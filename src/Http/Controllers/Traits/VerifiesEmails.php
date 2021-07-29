@@ -20,7 +20,7 @@ trait VerifiesEmails
      */
     public function verify(Request $request)
     {
-        if (! hash_equals((string) $request->route('code'), (string) hexdec(substr(sha1($request->user()->getKey().$request->user()->getEmailForVerification()), 0, 3)))) {
+        if (! hash_equals((string) $request->route('code'), (string) sprintf('%04d', hexdec(substr(sha1($request->user()->getKey().$request->user()->getEmailForVerification()), 0, 3))))) {
             return ApiResponse::send(['error' => 'Bad codes.'], 0, 403, 'Bad codes.');
         }
 
