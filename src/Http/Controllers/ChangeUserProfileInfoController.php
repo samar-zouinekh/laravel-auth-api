@@ -41,6 +41,7 @@ class ChangeUserProfileInfoController extends Controller
             }
         }
 
-        return ApiResponse::send(['status' => 'Account updated successfully'], 1, 200, 'Account updated successfully');
+        return ApiResponse::send(['status' => trans('laravel-auth-api::translation.account.updated.successfully')], 1, 200, trans('laravel-auth-api::translation.account.updated.successfully'));
+
     }
 }
