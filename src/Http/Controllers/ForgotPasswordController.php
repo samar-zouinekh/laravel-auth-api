@@ -1,8 +1,8 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers;
 
-use MedianetDev\LaravelAuthApi\Http\Controllers\Traits\SendsPasswordResetEmails;
+use SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers;
 
-use MedianetDev\LaravelAuthApi\Http\Controllers\Traits\VerifiesEmails;
+use SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\VerifiesEmails;
 
 class VerificationController extends Controller
 {

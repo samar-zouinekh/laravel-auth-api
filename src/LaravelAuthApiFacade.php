@@ -1,11 +1,11 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi;
+namespace SamarZouinekh\LaravelAuthApi;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \MedianetDev\LaravelAuthApi\Skeleton\SkeletonClass
+ * @see \SamarZouinekh\LaravelAuthApi\Skeleton\SkeletonClass
  */
 class LaravelAuthApiFacade extends Facade
 {

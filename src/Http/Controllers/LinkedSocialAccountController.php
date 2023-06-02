@@ -1,11 +1,11 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers;
 
-use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
-use MedianetDev\LaravelAuthApi\Http\Requests\SocialAccountRequest;
-use MedianetDev\LaravelAuthApi\Models\ApiUser;
-use MedianetDev\LaravelAuthApi\Models\LinkedSocialAccount;
+use SamarZouinekh\LaravelAuthApi\Http\Helpers\ApiResponse;
+use SamarZouinekh\LaravelAuthApi\Http\Requests\SocialAccountRequest;
+use SamarZouinekh\LaravelAuthApi\Models\ApiUser;
+use SamarZouinekh\LaravelAuthApi\Models\LinkedSocialAccount;
 
 class LinkedSocialAccountController extends Controller
 {

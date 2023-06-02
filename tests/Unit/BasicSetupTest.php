@@ -1,8 +1,8 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Tests\Unit;
+namespace SamarZouinekh\LaravelAuthApi\Tests\Unit;
 
-use MedianetDev\LaravelAuthApi\Tests\TestCase;
+use SamarZouinekh\LaravelAuthApi\Tests\TestCase;
 
 class BasicSetupTest extends TestCase
 {

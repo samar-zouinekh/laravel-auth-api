@@ -8,13 +8,13 @@ return [
     'route_prefix' => 'api/v1',
 
     // Fully qualified namespace of the User model
-    'user_model_fqn' => MedianetDev\LaravelAuthApi\Models\ApiUser::class,
+    'user_model_fqn' => SamarZouinekh\LaravelAuthApi\Models\ApiUser::class,
 
     // Fully qualified namespace of the Email verification notification template
-    'email_notification' => \MedianetDev\LaravelAuthApi\Http\Controllers\Traits\Notifications\VerifyEmail::class,
+    'email_notification' => \SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\Notifications\VerifyEmail::class,
 
     // Fully qualified namespace of the Password Reset notification template
-    'password_notification' => \MedianetDev\LaravelAuthApi\Http\Controllers\Traits\Notifications\ResetPassword::class,
+    'password_notification' => \SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\Notifications\ResetPassword::class,
 
     // Uncomment the route to disabled it.
     'disabled_routes' => [

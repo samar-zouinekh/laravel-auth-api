@@ -1,8 +1,8 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers;
 
-use MedianetDev\LaravelAuthApi\Http\Controllers\Traits\ResetsPasswords;
+use SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {

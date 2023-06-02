@@ -1,10 +1,10 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Tests\Feature;
+namespace SamarZouinekh\LaravelAuthApi\Tests\Feature;
 
 use Laravel\Passport\Passport;
-use MedianetDev\LaravelAuthApi\Models\ApiUser;
-use MedianetDev\LaravelAuthApi\Tests\TestCase;
+use SamarZouinekh\LaravelAuthApi\Models\ApiUser;
+use SamarZouinekh\LaravelAuthApi\Tests\TestCase;
 
 // use PHPUnit\Framework\TestCase;
 

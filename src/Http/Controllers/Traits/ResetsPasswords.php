@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers\Traits;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits;
 
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
+use SamarZouinekh\LaravelAuthApi\Http\Helpers\ApiResponse;
 
 trait ResetsPasswords
 {

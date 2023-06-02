@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Models;
+namespace SamarZouinekh\LaravelAuthApi\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
-use MedianetDev\LaravelAuthApi\Http\Controllers\Traits\MustVerifyEmail;
+use SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\MustVerifyEmail;
 
 class User extends Model implements
     AuthenticatableContract,

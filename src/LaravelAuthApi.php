@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi;
+namespace SamarZouinekh\LaravelAuthApi;
 
 class LaravelAuthApi
 {

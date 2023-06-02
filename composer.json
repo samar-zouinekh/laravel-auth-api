@@ -1,11 +1,11 @@
 {
-    "name": "medianet-dev/laravel-auth-api",
+    "name": "samar-zouinekh/laravel-auth-api",
     "description": "Laravel Auth over api",
     "keywords": [
-        "medianet-dev",
+        "samar-zouinekh",
         "laravel-auth-api"
     ],
-    "homepage": "http://www.medianet.com.tn",
+    "homepage": "https://github.com/samar-zouinekh",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MedianetDev\\LaravelAuthApi\\": "src"
+            "SamarZouinekh\\LaravelAuthApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MedianetDev\\LaravelAuthApi\\Tests\\": "tests"
+            "SamarZouinekh\\LaravelAuthApi\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MedianetDev\\LaravelAuthApi\\LaravelAuthApiServiceProvider"
+                "SamarZouinekh\\LaravelAuthApi\\LaravelAuthApiServiceProvider"
             ],
             "aliases": {
-                "LaravelAuthApi": "MedianetDev\\LaravelAuthApi\\LaravelAuthApiFacade"
+                "LaravelAuthApi": "SamarZouinekh\\LaravelAuthApi\\LaravelAuthApiFacade"
             }
         }
     }

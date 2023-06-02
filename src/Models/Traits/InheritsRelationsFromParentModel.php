@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Models\Traits;
+namespace SamarZouinekh\LaravelAuthApi\Models\Traits;
 
 use Illuminate\Support\Str;
 use ReflectionClass;

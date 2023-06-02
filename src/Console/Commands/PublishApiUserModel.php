@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Console\Commands;
+namespace SamarZouinekh\LaravelAuthApi\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
@@ -37,7 +37,7 @@ class PublishApiUserModel extends GeneratorCommand
      */
     public function handle()
     {
-        \Artisan::call('vendor:publish', ['--provider' => 'MedianetDev\LaravelAuthApi\LaravelAuthApiServiceProvider', '--tag' => 'config']);
+        \Artisan::call('vendor:publish', ['--provider' => 'SamarZouinekh\LaravelAuthApi\LaravelAuthApiServiceProvider', '--tag' => 'config']);
 
         $this->question('Uncomment  the user_model_fqn in your laravel-auth-api.php config file to set your current active User Model to the one just created.');
 
@@ -57,7 +57,7 @@ class PublishApiUserModel extends GeneratorCommand
     }
 
     /**
-     * Build the class. Replace MedianetDev namespace with App one.
+     * Build the class. Replace SamarZouinekh namespace with App one.
      *
      * @param string $name
      *
@@ -81,7 +81,7 @@ class PublishApiUserModel extends GeneratorCommand
      */
     protected function makeReplacements(&$stub)
     {
-        $stub = str_replace('MedianetDev\LaravelAuthApi\Models;', $this->laravel->getNamespace().'Models;', $stub);
+        $stub = str_replace('SamarZouinekh\LaravelAuthApi\Models;', $this->laravel->getNamespace().'Models;', $stub);
 
         if (! $this->files->exists($this->laravel['path'].'/User.php') && $this->files->exists($this->laravel['path'].'/Models/User.php')) {
             $stub = str_replace($this->laravel->getNamespace().'User', $this->laravel->getNamespace().'Models\User', $stub);

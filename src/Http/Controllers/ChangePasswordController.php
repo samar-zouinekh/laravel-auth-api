@@ -1,11 +1,11 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use MedianetDev\LaravelAuthApi\Http\Helpers\ApiResponse;
-use MedianetDev\LaravelAuthApi\Http\Requests\ChangePasswordRequest;
+use SamarZouinekh\LaravelAuthApi\Http\Helpers\ApiResponse;
+use SamarZouinekh\LaravelAuthApi\Http\Requests\ChangePasswordRequest;
 
 class ChangePasswordController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Helpers;
+namespace SamarZouinekh\LaravelAuthApi\Http\Helpers;
 
 use Symfony\Component\HttpFoundation\Response as ResponseCode;
 

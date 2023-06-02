@@ -1,6 +1,6 @@
 <?php
 
-namespace MedianetDev\LaravelAuthApi\Http\Controllers\Traits\Notifications;
+namespace SamarZouinekh\LaravelAuthApi\Http\Controllers\Traits\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -40,7 +40,7 @@ class VerifyEmail extends Notification
 
         return (new MailMessage)
             ->subject(Lang::get('Verify Email Address ['.sprintf('%04d', hexdec(substr(sha1($notifiable->getKey().$notifiable->getEmailForVerification()), 0, 3))).']'))
-            ->line(Lang::get('MedianetDev\LaravelAuthApi\Notifications\VerifyEmail.php '))
+            ->line(Lang::get('SamarZouinekh\LaravelAuthApi\Notifications\VerifyEmail.php '))
             ->action(Lang::get(sprintf('%04d', hexdec(substr(sha1($notifiable->getKey().$notifiable->getEmailForVerification()), 0, 3)))), '')
             ->line(Lang::get('If you did not create an account, no further action is required.'));
     }
